@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+  expense-tracker-backend:
+    image: expense-tracker-backend
+    build:
+     context:  expense-tracker-backend/
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/expense-tracker
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+  expense-tracker-frontend:
+    image: expense-tracker-frontend
+    build:
+     context: expense-tracker-react/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - expense-tracker-backend
+  db:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=expense-tracker
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
