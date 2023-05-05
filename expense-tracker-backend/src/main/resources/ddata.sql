@@ -1,0 +1,7 @@
+-- insert into users values (1,'Siamak')
+-- insert into users values (2,'John')
+-- insert into users values (3,'Adam')
+--
+-- insert into transactions values (100,'New York Business Trip',1)
+-- insert into transactions values (101,'Ford Mustang Payment',2)
+-- insert into transactions values(102,'Grand Canyon Trip With Family',3)
