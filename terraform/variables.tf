@@ -1,6 +1,6 @@
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "eu-west-1"
 }
 
 variable "back_repo_name" {
@@ -15,7 +15,7 @@ variable "front_repo_name" {
 
 variable "cloudwatch_group" {
   type    = string
-  default = "/ecs/micronaut-app"
+  default = "/ecs/expense-tracker-backend"
 }
 
 variable "backend-application_name" {

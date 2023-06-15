@@ -1,5 +1,7 @@
-export default (state, action) => {
-  switch(action.type) {
+export default Reduce
+
+function Reduce(state, action) {
+  switch (action.type) {
     case 'GET_TRANSACTIONS':
       return {
         ...state,

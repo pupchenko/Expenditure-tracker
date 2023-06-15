@@ -32,49 +32,4 @@ resource "null_resource" "deploy" {
   depends_on = [null_resource.build]
 }
 
-resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "public-read"
-}
-
-resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = aws_s3_bucket.bucket.id
-  policy = data.aws_iam_policy_document.allow_access_from_another_account.json
-}
-data "aws_iam_policy_document" "allow_access_from_another_account" {
-  statement {
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-
-    actions = [
-      "s3:GetObject",
-      "s3:ListBucket",
-    ]
-
-    resources = [
-      aws_s3_bucket.bucket.arn,
-      "${aws_s3_bucket.bucket.arn}/*",
-    ]
-  }
-}
-
-resource "aws_s3_bucket_website_configuration" "site_config" {
-  bucket = var.frontend_bucket_name
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
-resource "aws_s3_bucket" "bucket" {
-  bucket        = var.frontend_bucket_name
-  force_destroy = true
-}
-
 

@@ -2,6 +2,8 @@
 
 Application for tracking your expenses with React front-end and Java Spring back-end. Can be deployed to AWS by Terraform or run locally.
 
+![img.png](img.png)
+
 ### Start up guide local
 
 * Run ***docker-compose up*** in  project root directory to start application.
